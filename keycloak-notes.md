@@ -18,3 +18,16 @@
 ## Provider Patterns
 Keycloak has several Abstract Provider and Abstract Provider Factory classes.  
 To implement our SPI we need to extend one of those Abstract classes and **NOT THE CONCRETE CLASSES** because using concrete classes may lead to the service loader not picking up our services despite doing all the configurations correctly.
+
+## Scopes
+KeyCloak session is request scoped so every request creates a new session.
+
+Provider Factory is Application scoped, i.e. one instance is created throughout the life of the Application
+
+Providers are created on demand, session-scoped
+
+
+## For Future Reference
+DefaultEmailSenderProviderFactory possible lead for the email verification
+
+KeyCloak only allows one provider implementation for some SPIs such as Email provider, Database Provider, etc.
