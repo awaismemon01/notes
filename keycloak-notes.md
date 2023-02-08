@@ -12,3 +12,4 @@
     > then the file should look like this `META-INF/services/com.example.CodecSet`  
     > the file should have the fully qualified name of our implementing class like `com.example.service.StandardCodecSet`  
 
+- One more prerequiste is that the class should have a no-args constructor (still not clear properly why)
