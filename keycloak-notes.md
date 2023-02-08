@@ -13,3 +13,8 @@
     > the file should have the fully qualified name of our implementing class like `com.example.service.StandardCodecSet`  
 
 - One more prerequiste is that the class should have a no-args constructor (still not clear properly why)
+
+
+## Provider Patterns
+Keycloak has several Abstract Provider and Abstract Provider Factory classes.  
+To implement our SPI we need to extend one of those Abstract classes and **NOT THE CONCRETE CLASSES** because using concrete classes may lead to the service loader not picking up our services despite doing all the configurations correctly.
