@@ -10,7 +10,7 @@
   - Make a file with the name being the fully qualified name if the interface we are implementing
     > if the interface I am implementing is ``` com.example.CodecSet ```  
     > then the file should look like this `META-INF/services/com.example.CodecSet`  
-    > the file should have the fully qualified name of our implementing class like `com.example.service.StandardCodecSet`  
+    > and the content of the file should have the fully qualified name of our implementing class or classes like `com.example.service.StandardCodecSet`  
 
 - One more prerequiste is that the class should have a no-args constructor (still not clear properly why)
 
