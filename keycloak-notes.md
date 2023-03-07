@@ -31,3 +31,7 @@ Providers are created on demand, session-scoped
 DefaultEmailSenderProviderFactory possible lead for the email verification
 
 KeyCloak only allows one provider implementation for some SPIs such as Email provider, Database Provider, etc.
+
+## Themes for Clients
+KeyCloak gives client level theme the most priority, after that Realm level theme and if neither is selected than the default keycloak theme is selected.
+
