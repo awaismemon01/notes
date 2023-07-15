@@ -159,3 +159,57 @@ Reload NGINX
 Restart NGINX
 
 	sudo systemctl restart nginx
+
+
+## To Add SSL Certificate to Nginx
+
+Upload the certificate files to your desired directory in your ec2 instance (files - private.key, certificate.crt, ca_bundle.crt)
+
+after uploading, you need to merge the certificate and ca_bundle to one file
+
+	cat certificate.crt ca_bundle.crt >> server.crt
+
+Then edit your nginx.conf file by the vim command
+
+	sudo vim /etc/nginx/nginx.conf
+
+ press i to start editing
+
+ At the bottom uncomment the server{} component which will have the ssl porperties
+ after uncommenting edit properties
+
+ the server component should look like this
+
+ 	server {
+        listen       443 ssl http2;
+        listen       [::]:443 ssl http2;
+        server_name  _;
+        location / {
+           root /home/ec2-user/project_404;
+           try_files $uri $uri/ /index.html;
+        }
+
+        ssl_certificate "/home/ec2-user/ssl/server.crt";
+        ssl_certificate_key "/home/ec2-user/ssl/private.key";
+        ssl_session_cache shared:SSL:1m;
+        ssl_session_timeout  10m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_prefer_server_ciphers on;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+	    root /home/ec2-user/project_404;
+        }
+    }
+
+
+ remember to change the line after the `server_name` from `root` to the `location` component
+ 
+ and also remember to remove the property `ssl_ciphers PROFILE=SYSTEM;` and instead add `ssl_protocols TLSv1 TLSv1.1 TLSv1.2;` instead.
