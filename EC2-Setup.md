@@ -163,6 +163,11 @@ Restart NGINX
 
 ## To Add SSL Certificate to Nginx
 
+A site to generate ssl certificates for free :  
+
+https://www.sslforfree.com
+
+
 Upload the certificate files to your desired directory in your ec2 instance (files - private.key, certificate.crt, ca_bundle.crt)
 
 after uploading, you need to merge the certificate and ca_bundle to one file
