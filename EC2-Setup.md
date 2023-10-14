@@ -194,6 +194,11 @@ Then edit your nginx.conf file by the vim command
            try_files $uri $uri/ /index.html;
         }
 
+	location /api/ {
+                #backend
+                proxy_pass http://my-backend-url;
+        }
+	
         ssl_certificate "/home/ec2-user/ssl/server.crt";
         ssl_certificate_key "/home/ec2-user/ssl/private.key";
         ssl_session_cache shared:SSL:1m;
@@ -218,3 +223,5 @@ Then edit your nginx.conf file by the vim command
  remember to change the line after the `server_name` from `root` to the `location` component
  
  and also remember to remove the property `ssl_ciphers PROFILE=SYSTEM;` and instead add `ssl_protocols TLSv1 TLSv1.1 TLSv1.2;` instead.
+
+ also in the angular frontend change the backend path from the regular `http://server-url`  -->  `https://server-url/api` .
