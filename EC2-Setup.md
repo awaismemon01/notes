@@ -25,7 +25,7 @@ This will install java 11 version on ec2
 
 ## RUN THE SPRINGBOOT JAR WITH THIS COMMAND
 
-	nohup java -jar {jar file name} 2>&1 >> logfile.log &
+	nohup java -jar CommunityApp-0.0.1-SNAPSHOT.jar > logfile.log 2>&1 &
 
 ex:-	nohup java -jar CommunityApp-0.0.1-SNAPSHOT.jar 2>&1 >> logfile.log &
 
@@ -47,7 +47,7 @@ download files
 
 add GPG key
 
-	sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+	sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
 
 install mysql server
 
